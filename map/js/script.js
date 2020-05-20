@@ -210,28 +210,8 @@ if(Modernizr.webgl) {
 						//"tiles": ["http://localhost:8000/boundaries/{z}/{x}/{y}.pbf"],
 						"tiles": ["https://cdn.ons.gov.uk/maptiles/t26/boundaries/{z}/{x}/{y}.pbf"],
 					},
-					"minzoom": 9,
+					"minzoom": 7,
 					"maxzoom": 20,
-					"source-layer": "boundaries",
-					"layout": {},
-					"paint": {
-						"line-color": "orange",
-						"line-width": 3
-					},
-					"filter": ["==", "lsoa11cd", ""]
-				}, 'place_suburb');
-
-
-				map.addLayer({
-					"id": "lsoa-outlines-hover2",
-					"type": "line",
-					"source": {
-						"type": "vector",
-						//"tiles": ["http://localhost:8000/boundaries/{z}/{x}/{y}.pbf"],
-						"tiles": ["https://cdn.ons.gov.uk/maptiles/t26/boundaries/{z}/{x}/{y}.pbf"],
-					},
-					"minzoom": 4,
-					"maxzoom": 9,
 					"source-layer": "boundaries",
 					"layout": {},
 					"paint": {
@@ -339,17 +319,8 @@ if(Modernizr.webgl) {
 				if(newlsoa11cd != oldlsoa11cd) {
 					oldlsoa11cd = e.features[0].properties.lsoa11cd;
 
-					if(map.getZoom() > 9) {
-						map.setFilter("lsoa-outlines-hover", ["==", "lsoa11cd", e.features[0].properties.lsoa11cd]);
-						var features = map.queryRenderedFeatures(e.point,{layers: ['lsoa-outlines']});
-
-
-					} else {
-						map.setFilter("lsoa-outlines-hover2", ["==", "lsoa11cd", e.features[0].properties.lsoa11cd]);
-						var features = map.queryRenderedFeatures(e.point,{layers: ['lsoa-outlines2']});
-
-					}
-
+					map.setFilter("lsoa-outlines-hover", ["==", "lsoa11cd", e.features[0].properties.lsoa11cd]);
+					var features = map.queryRenderedFeatures(e.point,{layers: ['lsoa-outlines']});
 
 				 	if(features.length != 0){
 
@@ -393,19 +364,9 @@ if(Modernizr.webgl) {
 		 		newlsoa11cd = features[0].properties.lsoa11cd;
 
 				if(newlsoa11cd != oldlsoa11cd) {
-					if(map.getZoom() > 9) {
-						map.setFilter("lsoa-outlines-hover", ["==", "lsoa11cd", e.features[0].properties.lsoa11cd]);
-						//var features = map.queryRenderedFeatures(e.point,{layers: ['lsoa-outlines']});
-						setAxisVal(features[0].properties.lsoa11nm, features[0].properties.lsoa11cd,features[0].properties[hoverlayername],features[0].properties[secondvar]);
-
-
-
-					} else {
-						map.setFilter("lsoa-outlines-hover2", ["==", "lsoa11cd", e.features[0].properties.lsoa11cd]);
-						//var features = map.queryRenderedFeatures(e.point,{layers: ['lsoa-outlines2']});
-						setAxisVal(features[0].properties.lsoa11nm, features[0].properties.lsoa11cd,features[0].properties[hoverlayername],features[0].properties[secondvar]);
-
-					}
+					map.setFilter("lsoa-outlines-hover", ["==", "lsoa11cd", e.features[0].properties.lsoa11cd]);
+					//var features = map.queryRenderedFeatures(e.point,{layers: ['lsoa-outlines']});
+					setAxisVal(features[0].properties.lsoa11nm, features[0].properties.lsoa11cd,features[0].properties[hoverlayername],features[0].properties[secondvar]);
 				}
 
 		 		// if(newlsoa11cd != oldlsoa11cd) {
