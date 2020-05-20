@@ -145,8 +145,8 @@ if(Modernizr.webgl) {
 							  ['linear'],
 							  // ['zoom'] indicates zoom, default at lowest number, threshold, value above threshold
 							  ['zoom'],
-							  6, 0.6,
-							  8, 0.2
+							  8, 0.6,
+							  10, 0.2
 						],
 						'fill-outline-color':'rgba(0,0,0,0)',
 						'fill-color': {
