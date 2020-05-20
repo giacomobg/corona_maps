@@ -143,7 +143,7 @@ if(Modernizr.webgl) {
 						'fill-opacity': [
 							'case',
 							// check the zoom level is above threshold
-							['>', ['zoom', 9], false],
+							['>', 'zoom', 9],
 							0.2,
 							1
 						],
