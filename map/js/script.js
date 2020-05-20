@@ -163,7 +163,7 @@ if(Modernizr.webgl) {
 			}, 'highway_name_other');
 
 			map.addLayer({
-				"id": "lsoa-outlines2",
+				"id": "lsoa-outlines",
 				"type": "fill",
 				"source": {
 					"type": "vector",
@@ -171,11 +171,17 @@ if(Modernizr.webgl) {
 					"tiles": ["https://cdn.ons.gov.uk/maptiles/t26/boundaries/{z}/{x}/{y}.pbf"],
 				},
 				"minzoom": 4,
-				"maxzoom": 9,
+				"maxzoom": 20,
 				"source-layer": "boundaries",
 				"layout": {},
 				'paint': {
-						'fill-opacity':0.5,
+						'fill-opacity': [
+							'case',
+							// check the zoom level is above threshold
+							['>', ['zoom', 9], false],
+							0.2,
+							0.5
+						],
 						'fill-outline-color':'rgba(0,0,0,0)',
 						'fill-color': {
 								// Refers to the data of that specific property of the polygon
