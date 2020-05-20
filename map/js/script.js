@@ -141,10 +141,12 @@ if(Modernizr.webgl) {
 				"layout": {},
 				'paint': {
 						'fill-opacity': [
-							'step',
+							'interpolate',
+							  'linear',
 							  // ['zoom'] indicates zoom, default at lowest number, threshold, value above threshold
-							  ['zoom'], 0.2,
-							  9, 1
+							  ['zoom'],
+							  7, 0.6,
+							  9, 0.2
 						],
 						'fill-outline-color':'rgba(0,0,0,0)',
 						'fill-color': {
@@ -275,17 +277,14 @@ if(Modernizr.webgl) {
 
 			//Highlight stroke on mouseover (and show area information)
 			map.on("mousemove", "lsoa-outlines", onMove);
-			map.on("mousemove", "lsoa-outlines2", onMove);
 
 			// Reset the lsoa-fills-hover layer's filter when the mouse leaves the layer.
 			map.on("mouseleave", "lsoa-outlines", onLeave);
-			map.on("mouseleave", "lsoa-outlines2", onLeave);
 
 			map.getCanvasContainer().style.cursor = 'pointer';
 
 			//Add click event
 			map.on('click', 'lsoa-outlines', onClick);
-			map.on('click', 'lsoa-outlines2', onClick);
 
 			//get location on click
 			d3.select(".mapboxgl-ctrl-geolocate").on("click", geolocate);
@@ -686,8 +685,6 @@ if(Modernizr.webgl) {
 				map.setPaintProperty("imdlayer", 'fill-color', styleObject);
 
 				map.setPaintProperty("lsoa-outlines", 'fill-color', styleObject);
-
-				map.setPaintProperty("lsoa-outlines2", 'fill-color', styleObject);
 
 				console.log(features)
 				if(typeof features !== 'undefined' ) {
