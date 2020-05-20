@@ -127,41 +127,6 @@ if(Modernizr.webgl) {
 
 		map.on('load', function() {
 
-
-			map.addLayer({
-				"id": "lsoa-outlines",
-				"type": "fill",
-				"source": {
-					"type": "vector",
-					//"tiles": ["http://localhost:8000/boundaries/{z}/{x}/{y}.pbf"],
-					"tiles": ["https://cdn.ons.gov.uk/maptiles/t26/boundaries/{z}/{x}/{y}.pbf"],
-				},
-				"minzoom": 9,
-				"maxzoom": 20,
-				"source-layer": "boundaries",
-				"layout": {},
-				'paint': {
-						'fill-opacity':0.2,
-						'fill-outline-color':'rgba(0,0,0,0)',
-						'fill-color': {
-								// Refers to the data of that specific property of the polygon
-							'property': layername,
-							'default': '#666666',
-							// Prevents interpolation of colors between stops
-							'base': 0,
-						'stops': [
-							[dvc.breaks[0][0], dvc.varcolour[0]],
-							[dvc.breaks[0][1], dvc.varcolour[0]],
-							[dvc.breaks[0][2], dvc.varcolour[1]],
-							[dvc.breaks[0][3], dvc.varcolour[2]],
-							[dvc.breaks[0][4], dvc.varcolour[3]],
-							[dvc.breaks[0][5], dvc.varcolour[4]]
-						]
-						}
-
-					}
-			}, 'highway_name_other');
-
 			map.addLayer({
 				"id": "lsoa-outlines",
 				"type": "fill",
@@ -180,7 +145,7 @@ if(Modernizr.webgl) {
 							// check the zoom level is above threshold
 							['>', ['zoom', 9], false],
 							0.2,
-							0.5
+							1
 						],
 						'fill-outline-color':'rgba(0,0,0,0)',
 						'fill-color': {
