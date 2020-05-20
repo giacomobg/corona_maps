@@ -142,7 +142,7 @@ if(Modernizr.webgl) {
 				'paint': {
 						'fill-opacity': [
 							'interpolate',
-							  'linear',
+							  ['linear'],
 							  // ['zoom'] indicates zoom, default at lowest number, threshold, value above threshold
 							  ['zoom'],
 							  7, 0.6,
