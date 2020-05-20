@@ -143,7 +143,7 @@ if(Modernizr.webgl) {
 						'fill-opacity': [
 							'step',
 							  // ['zoom'] indicates zoom, default at lowest number, threshold, value above threshold
-							  ['zoom'], 0.2
+							  ['zoom'], 0.2,
 							  9, 1
 						],
 						'fill-outline-color':'rgba(0,0,0,0)',
