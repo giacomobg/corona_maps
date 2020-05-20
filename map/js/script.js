@@ -210,7 +210,7 @@ if(Modernizr.webgl) {
 						//"tiles": ["http://localhost:8000/boundaries/{z}/{x}/{y}.pbf"],
 						"tiles": ["https://cdn.ons.gov.uk/maptiles/t26/boundaries/{z}/{x}/{y}.pbf"],
 					},
-					"minzoom": 7,
+					"minzoom": 4,
 					"maxzoom": 20,
 					"source-layer": "boundaries",
 					"layout": {},
