@@ -141,11 +141,10 @@ if(Modernizr.webgl) {
 				"layout": {},
 				'paint': {
 						'fill-opacity': [
-							'case',
-							// check the zoom level is above threshold
-							['>', 'zoom', 9],
-							0.2,
-							1
+							'step',
+							  // ['zoom'] indicates zoom, default at lowest number, threshold, value above threshold
+							  ['zoom'], 0.2
+							  9, 1
 						],
 						'fill-outline-color':'rgba(0,0,0,0)',
 						'fill-color': {
